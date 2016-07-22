@@ -118,15 +118,15 @@ describe('tabs', function() {
       titles().eq(1).find('> a').click();
       expect(scope.deselectFirst).toHaveBeenCalled();
       expect(scope.deselectFirst.calls.argsFor(0)[0].target).toBe(titles().eq(1).find('> a')[0]);
-      expect(scope.deselectFirst.calls.argsFor(0)[1]).toBe(1);
+      expect(scope.deselectFirst.calls.argsFor(0)[1]).toBe(2);
       titles().eq(0).find('> a').click();
       expect(scope.deselectSecond).toHaveBeenCalled();
       expect(scope.deselectSecond.calls.argsFor(0)[0].target).toBe(titles().eq(0).find('> a')[0]);
-      expect(scope.deselectSecond.calls.argsFor(0)[1]).toBe(0);
+      expect(scope.deselectSecond.calls.argsFor(0)[1]).toBe(1);
       titles().eq(1).find('> a').click();
       expect(scope.deselectFirst.calls.count()).toBe(2);
       expect(scope.deselectFirst.calls.argsFor(1)[0].target).toBe(titles().eq(1).find('> a')[0]);
-      expect(scope.deselectFirst.calls.argsFor(1)[1]).toBe(1);
+      expect(scope.deselectFirst.calls.argsFor(1)[1]).toBe(2);
     });
 
     it('should prevent tab deselection when $event.preventDefault() is called', function() {

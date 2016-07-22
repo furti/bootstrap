@@ -9,10 +9,12 @@ angular.module('ui.bootstrap.tabs', [])
     if (!destroyed) {
       var previousIndex = findTabIndex(oldIndex);
       var previousSelected = ctrl.tabs[previousIndex];
+      var selected = ctrl.tabs[index];
+
       if (previousSelected) {
         previousSelected.tab.onDeselect({
           $event: evt,
-          $selectedIndex: index
+          $selectedIndex: selected ? selected.index : undefined
         });
         if (evt && evt.isDefaultPrevented()) {
           return;
@@ -20,7 +22,6 @@ angular.module('ui.bootstrap.tabs', [])
         previousSelected.tab.active = false;
       }
 
-      var selected = ctrl.tabs[index];
       if (selected) {
         selected.tab.onSelect({
           $event: evt
